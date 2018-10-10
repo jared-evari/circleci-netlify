@@ -52,7 +52,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ls /tmp/output && /node_modules/.bin/netlify deploy --dir /tmp/output/static --prod
+          command: ls /tmp/output && node_modules/.bin/netlify deploy --dir /tmp/output/static --prod
 
 workflows:
   version: 2
