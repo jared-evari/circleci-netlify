@@ -40,22 +40,12 @@ jobs:
       - build
 
     steps:
-      - checkout
-
       - attach_workspace:
           at: ./
 
-      - restore_cache:
-          key: dependency-cache-{{ checksum "./package.json" }}
-
       - run:
           name: install
-          command: npm install
-
-      - save_cache:
-          key: dependency-cache-{{ checksum "./package.json" }}
-          paths:
-            - ./node_modules
+          command: npm i netlify-cli
 
       - run:
           name: deploy-netlify
