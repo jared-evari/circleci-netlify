@@ -4,17 +4,12 @@
 #
 version: 2
 jobs:
-  build:
+  build_and_deploy:
     docker:
       - image: circleci/node:8.9.3
 
-    working_directory: ~/my-working-dir
-
     steps:
       - checkout
-
-      - attach_workspace:
-          at: ~/my-working-dir
 
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
@@ -32,35 +27,12 @@ jobs:
           name: build
           command: npm run build
 
-      - persist_to_workspace:
-            root: .
-            paths:
-              - static
-
-  deploy:
-    docker:
-      - image: circleci/node:8.9.3
-
-    requires:
-      - build
-
-    working_directory: ~/my-working-dir
-
-    steps:
-      - attach_workspace:
-          at: ~/my-working-dir
-
-      - run:
-          name: install
-          command: npm i netlify-cli
-
       - run:
           name: deploy-netlify
-          command: ls . && ./node_modules/.bin/netlify deploy --dir static --prod
-
+          command: npm i netlify-cli && ./node_modules/.bin/netlify deploy --dir static --prod
+      
 workflows:
   version: 2
   all_jobs:
     jobs:
-      - build
-      - deploy
+      - build_and_deploy
