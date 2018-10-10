@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: build
-          command: npm run build
+          command: npm run build && ls output
 
       - persist_to_workspace:
             root: ./
