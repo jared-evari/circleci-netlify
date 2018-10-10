@@ -28,9 +28,9 @@ jobs:
           command: npm run build
 
       - persist_to_workspace:
-            root: .
+            root: ./
             paths:
-              - static/*
+              - static
 
   deploy:
     docker:
@@ -43,7 +43,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: .
+          at: ./
 
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
