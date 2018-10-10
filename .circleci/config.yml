@@ -11,6 +11,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: ./
+
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
 
@@ -49,7 +52,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ls . && ./node_modules/.bin/netlify deploy --dir output --prod
+          command: ls . && ./node_modules/.bin/netlify deploy --dir static --prod
 
 workflows:
   version: 2
