@@ -36,6 +36,9 @@ jobs:
     docker:
       - image: circleci/node:8.9.3
 
+    requires:
+      - build
+
     steps:
       - checkout
 
