@@ -1,0 +1,14 @@
+{
+  "name": "circleci-netlify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "bash build.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-cli": "^2.0.0"
+  }
+}
