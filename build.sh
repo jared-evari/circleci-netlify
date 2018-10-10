@@ -1,3 +1,4 @@
 echo "Running build!"
-cp src/index.html static
+mkdir static
+cp src/index.html static/index.html
 echo "Build done to ./static"
