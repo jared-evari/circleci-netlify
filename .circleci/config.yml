@@ -12,7 +12,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: .
+          at: /tmp/output
 
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
@@ -31,7 +31,7 @@ jobs:
           command: npm run build
 
       - persist_to_workspace:
-            root: .
+            root: /tmp/output
             paths:
               - static
 
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: .
+          at: /tmp/output
 
       - run:
           name: install
@@ -52,7 +52,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ls . && ./node_modules/.bin/netlify deploy --dir ./static --prod
+          command: ls /tmp/output && /node_modules/.bin/netlify deploy --dir /tmp/output/static --prod
 
 workflows:
   version: 2
