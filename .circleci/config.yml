@@ -56,7 +56,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: npm i netlify-cli && netlify deploy -s $NETLIFY_SITE_ID -p output -t $NETLIFY_ACCESS_TOKEN -e production
+          command: ./node_modules/.bin/netlify deploy -s $NETLIFY_SITE_ID -p output -t $NETLIFY_ACCESS_TOKEN -e production
 
 workflows:
   version: 2
