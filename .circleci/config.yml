@@ -52,7 +52,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ./node_modules/.bin/netlify deploy --dir static --prod
+          command: ls static ./node_modules/.bin/netlify deploy --dir static --prod
 
 workflows:
   version: 2
