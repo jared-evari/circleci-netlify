@@ -8,11 +8,13 @@ jobs:
     docker:
       - image: circleci/node:8.9.3
 
+    working_directory: ~/my-working-dir
+
     steps:
       - checkout
 
       - attach_workspace:
-          at: .
+          at: ~/my-working-dir
 
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
@@ -42,9 +44,11 @@ jobs:
     requires:
       - build
 
+    working_directory: ~/my-working-dir
+
     steps:
       - attach_workspace:
-          at: .
+          at: ~/my-working-dir
 
       - run:
           name: install
