@@ -43,7 +43,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: ./tmp/output
+          at: /tmp/output
 
       - restore_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
@@ -59,7 +59,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ls ./tmp/output && ./node_modules/.bin/netlify deploy --dir ./tmp/output --prod
+          command: ls /tmp && ./node_modules/.bin/netlify deploy --dir /tmp/output --prod
 
 workflows:
   version: 2
