@@ -25,12 +25,12 @@ jobs:
 
       - run:
           name: build
-          command: npm run build && ls .
+          command: npm run build
 
       - persist_to_workspace:
             root: /tmp/output
             paths:
-              - output/*
+              - static/*
 
   deploy:
     docker:
