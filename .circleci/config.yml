@@ -28,9 +28,9 @@ jobs:
           command: npm run build
 
       - persist_to_workspace:
-            root: ./
+            root: /tmp/output
             paths:
-              - output
+              - output/*
 
   deploy:
     docker:
@@ -59,7 +59,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command:  find /tmp/output -type d && ./node_modules/.bin/netlify deploy --dir /tmp/output --prod
+          command: ./node_modules/.bin/netlify deploy --dir /tmp/output --prod
 
 workflows:
   version: 2
