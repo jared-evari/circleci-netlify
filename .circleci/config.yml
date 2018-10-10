@@ -30,7 +30,7 @@ jobs:
       - persist_to_workspace:
             root: ./
             paths:
-              - output/output
+              - output
 
   deploy:
     docker:
@@ -59,7 +59,7 @@ jobs:
 
       - run:
           name: deploy-netlify
-          command: ./node_modules/.bin/netlify deploy --dir /tmp/output --prod
+          command: ls -d */ && ./node_modules/.bin/netlify deploy --dir /tmp/output --prod
 
 workflows:
   version: 2
