@@ -1,3 +1,3 @@
 echo "Running build!"
-cp src/myfile.html output
+cp src/index.html output
 echo "Build done!"
